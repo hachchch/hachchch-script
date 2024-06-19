@@ -1,4 +1,11 @@
 @font-face {
-  font-family: "Misaki Mincho";
-  src: url("https://github.com/hachchch/hachchch-script/blob/main/css/misaki_mincho.ttf") format("truetype");
+font-family:'Misaki Mincho';
+src: url('misaki_mincho.eot');
+src: url('misaki_mincho.woff') format('woff'),
+url('misaki_mincho.ttf') format('truetype');
+}
+
+.misaki {
+font-family:'misakigothic';
+font-size:16px;
 }
