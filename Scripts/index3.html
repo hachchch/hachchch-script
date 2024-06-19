@@ -1,1 +1,61 @@
-
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Music of hachchch</title>
+        <style type="text/css">
+            @font-face {
+                font-family:'misakimincho';
+                src: url('../css/misaki_mincho.eot');
+                src: url('../css/misaki_mincho.woff') format('woff'),
+                    url('../css/misaki_mincho.ttf') format('truetype');
+            }
+            .misaki {
+                font-family:'misakimincho';
+                font-size:16px;
+            }
+        </style>
+        <style>
+        body{
+                font-size: 30px;
+                margin: 40px;
+                background-color: #1f1e29;
+                color: #ffffff;
+            }
+            .g {
+                font-size: 50px;
+                color: #51baf4;
+            }
+            
+        </style>
+    </head>
+    <body>
+      <title class = "misaki g"></title>
+      <audio id="GA" controls src="../Sounds/Green Algae.mp3"></audio>
+   <p>お使いのブラウザは非対応です</p>
+        </audio>
+    <comment class = "misaki"></comment>
+        <input type="button" value="↑" onclick="GAbgmRestart();" />
+      <script type="text/javascript">
+        function GAbgmRestart() {
+          document.getElementById('GA').pause();
+          document.getElementById('GA').currentTime = 0;
+        }
+        function TWbgmRestart() {
+          document.getElementById('TW').pause();
+          document.getElementById('TW').currentTime = 0;
+        }
+        function EUbgmRestart() {
+          document.getElementById('EU').pause();
+          document.getElementById('EU').currentTime = 0;
+        }
+        function KYbgmRestart() {
+          document.getElementById('KY').pause();
+          document.getElementById('KY').currentTime = 0;
+        }
+      </script>
+        <div>
+            <h1 class = "misaki"><a href = 'https://hachchch.github.io/hachchch-script/'>戻る</a></h1>
+        </div>
+    </body>
+</html>
