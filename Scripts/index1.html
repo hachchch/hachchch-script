@@ -80,6 +80,33 @@
               // 変数から intervalID を解放
               nIntervId = null;
               }
+              function keyboardInputHandler(e) {
+                  e.preventDefault();
+                  if (e.key === "↑") {
+                      res.value += "↑";
+                  } else if (e.key === "→") {
+                      res.value += "→";
+                  } else if (e.key === "←") {
+                      res.value += "←";
+                  } else if (e.key === "↓") {
+                      res.value += "↓";
+                  } else if (e.key === "あ") {
+                      res.value += "あ";
+                  } else if (e.key === "い") {
+                      res.value += "い";
+                  } else if (e.key === "う") {
+                      res.value += "う";
+                  } else if (e.key === "え") {
+                      res.value += "え";
+                  } else if (e.key === "お") {
+                      res.value += "お";
+                  } else if (e.key === "Enter") {
+                      repeatTimer();
+                  }
+                  if (e.key === "Backspace") {
+                      res.value = resultInput.substring(0, res.value.length - 1);
+                  }
+              }
       </script>
         <div>
             <h1 class = "misaki"><a href = 'https://hachchch.github.io/'>ホームへ戻る</a></h1>
