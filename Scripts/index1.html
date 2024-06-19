@@ -42,6 +42,8 @@
         <input type="button" value="Done" onclick=repeatTimer();ring(); />
       <script type="text/javascript">
 function ring() {
+    audio.pause();
+    audio.currentTime = 0;
    document.getElementById("ClickSound").play();
 }
 </script>
