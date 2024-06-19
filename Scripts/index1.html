@@ -31,7 +31,35 @@
     </head>
     <body>
       <script type="text/javascript">
-        JButton("追加")
+        import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import java.awt.Container;
+import java.awt.BorderLayout;
+
+class JSample1_2 extends JFrame{
+  public static void main(String args[]){
+    JSample1_2 frame = new JSample1_2("MyTitle");
+    frame.setVisible(true);
+  }
+
+  JSample1_2(String title){
+    setTitle(title);
+    setBounds(100, 100, 600, 400);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    JButton button1 = new JButton("OK");
+    JButton button2 = new JButton();
+    button2.setText("Please Push Button");
+
+    JPanel p = new JPanel();
+    p.add(button1);
+    p.add(button2);
+
+    Container contentPane = getContentPane();
+    contentPane.add(p, BorderLayout.CENTER);
+  }
+}
         </script>
         <div>
             <h1 class = "misaki"><a href = 'https://hachchch.github.io/'>ホームへ戻る</a></h1>
