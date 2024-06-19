@@ -3,23 +3,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>my-scripts</title>
-        <style>
-        body{
-                font-size: 30px;
-                font-family: 'Misaki Mincho', sans-serif;
-                margin: 40px;
-                background-color: #1f1e29;
-                color: #51baf4;
+        <style type="text/css">
+            @font-face {
+                font-family:'misakimincho';
+                src: url('misaki_mincho.eot');
+                src: url('misaki_mincho.woff') format('woff'),
+                    url('misaki_mincho.ttf') format('truetype');
             }
-            #prof h1:first-letter{
-                font-size: 125%;
-                color: #7be0ff;
+
+            .misaki {
+                font-family:'misakimincho';
+                font-size:16px;
             }
-    </style>
-        <link rel="stylesheet" type="text/css" href="https://github.com/hachchch/hachchch-script/blob/main/index.css">
+        </style>
     </head>
     <body>
-      <h1>ここに文章</h1><br>
+      <h1 class = "misaki">ここに文章</h1><br>
         <div>
             text!
         </div>
