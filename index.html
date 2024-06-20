@@ -22,11 +22,25 @@
    <source src="./Sounds/press.mp3" type="audio/mp3">
    <p>効果音は非対応です</p>
         </audio>
+        <audio id="ceSound" preload="auto">
+   <source src="./Sounds/clickEntity.mp3" type="audio/mp3">
+   <p>効果音は非対応です</p>
+        </audio>
         <script type="text/javascript">
             function pressTrigger() {
                 document.getElementById('PressSound').pause();
                 document.getElementById('PressSound').currentTime = 0;
                 press();
+                function press() {
+                    document.getElementById("PressSound").play();
+                }
+                function ceTrigger() {
+                document.getElementById('ceSound').pause();
+                document.getElementById('ceSound').currentTime = 0;
+                ce();
+                function ce() {
+                    document.getElementById("ceSound").play();
+                }
         </script>
       <h1 align = "center" class = "misaki">いろんなスクリプトを作っております。</h1><br>
         <div>
@@ -38,6 +52,6 @@
             <p class = "misaki"><a href = 'https://hachchch.github.io/' onclick="pressTrigger();">ホームへ戻る</a></p>
         </div>
         <p><img src="./Images/Flower.png" width="240" height="240"></p>
-        <input align="right" type="image" src="./Images/Pixel.png" height="240" width="240"/>
+        <input align="right" onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="240" width="240"/>
     </body>
 </html>
