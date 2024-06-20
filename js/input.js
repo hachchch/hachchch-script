@@ -16,8 +16,26 @@ function pressTrigger() {
 function press() {
    document.getElementById("PressSound").play();
 }
+function selectTrigger() {
+    document.getElementById('SelectSound').pause();
+    document.getElementById('SelectSound').currentTime = 0;
+    select();
+}
+function select() {
+   document.getElementById("SelectSound").play();
+}
+
+function cancelTrigger() {
+    document.getElementById('CancelSound').pause();
+    document.getElementById('CancelSound').currentTime = 0;
+    cancel();
+}
+function cancel() {
+   document.getElementById("CancelSound").play();
+}
 // ボタン
 const res = document.getElementById("commandResult");
+const remember = [];
 
           function input(value) {
               const inputedValue = value;
@@ -35,25 +53,38 @@ const res = document.getElementById("commandResult");
               const resultInput = res.value;
               var i = res.value.length -1;
               if (res.value[i] == "↑") {
-                  // alert("上");
+                  remember += "u";
               }else if (res.value[i] == "→") {
-                  // alert("右");
+                  remember += "r";
               }else if (res.value[i] == "←") {
-                  // alert("左");
+                  remember += "l";
               }else if (res.value[i] == "↓") {
-                  // alert("下");
+                  remember += "d";
               }
               res.value = resultInput.substring(0, res.value.length -1);
+              function forget (){
+                  remember = remember.substring(0, 0);
+              }
               pressTrigger();
               if (res.value.length < 1){
                   stopRepeatTimer();
+                  if (remember == ["d","u","r"]){
+                      kekka1();
+                      forget();
+                  }else if (remember == ["l","u","l","r"]){
+                      kekka2();
+                      forget();
+                  }else{
+                      kekkaHumei();
+                      forget();
+                  }
               }
               }
           let nIntervId;
 
               function repeatTimer() {
                       if (!nIntervId) {
-                      nIntervId = setInterval(startMovement, 125);
+                      nIntervId = setInterval(startMovement, 150);
                   }
                 }
 function stopRepeatTimer() {
@@ -117,5 +148,19 @@ window.addEventListener(
         true,
 );
 // 結果
-var elem = document.getElementById("resultOfCommand");
-elem.innerHTML = "res.value";
+var kekka1 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "なんか成功しました。";
+    selectTrigger();
+}
+var kekka2 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "戻ります...";
+    selectTrigger();
+    window.location.href = "{https://hachchch.github.io/hachchch-script/}";
+}
+var kekkaHumei = function(){
+    var elem = document.getElementById("resultOfCommand");
+    cancelTrigger();
+    elem.innerHTML = "コマンドは見つかりませんでした。";
+}
