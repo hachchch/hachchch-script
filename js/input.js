@@ -53,7 +53,7 @@ const res = document.getElementById("commandResult");
 
               function repeatTimer() {
                       if (!nIntervId) {
-                      nIntervId = setInterval(startMovement, 250);
+                      nIntervId = setInterval(startMovement, 125);
                   }
                 }
 function stopRepeatTimer() {
