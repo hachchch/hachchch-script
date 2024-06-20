@@ -19,11 +19,17 @@
                 font-size: 70px;
                 color: #51baf4;
             }
+            #note{
+                font-size: 10px;
+            }
             
         </style>
     </head>
     <body>
     <h class = "misaki header">hachchchの音楽室</h>
+        <div id="note">
+            <t>音の停止はxかcの入力でもできるよ(PCの場合)。</t>
+        </div>    
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/vrtmkxkjpti2">緑藻</a>:</figcaption>
       <audio id="GA" controls src="../Sounds/Green Algae.mp3">お使いのブラウザは曲の再生に対応していません</audio>
@@ -69,6 +75,32 @@
           document.getElementById('KY').pause();
           document.getElementById('KY').currentTime = 0;
         }
+        window.addEventListener(
+            "keydown",
+            (event) => {
+                if (event.defaultPrevented) {
+                    return;
+                }
+                switch (event.key) {
+                    case "x":
+                        GAbgmRestart();
+                        MNbgmRestart();
+                        TWbgmRestart();
+                        KYbgmRestart();
+                        break;
+                    case "c":
+                        GAbgmRestart();
+                        MNbgmRestart();
+                        TWbgmRestart();
+                        KYbgmRestart();
+                        break;
+                    default:
+                        return;
+                }
+                event.preventDefault();
+            },
+            true,
+        );
       </script>
         <div>
             <h class="misaki g">その他</h>
