@@ -49,10 +49,9 @@ const remember = [];
               res.value += enteredValue;
           }
 
+rember.remind = '';
+
           function startMovement() {
-              if (!rember.remind){
-              remember.remind = '';
-              }
               var i = res.value.length -1;
               if (res.value[i] == "↑") {
                   remember.remind += "u";
