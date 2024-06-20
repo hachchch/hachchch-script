@@ -116,3 +116,6 @@ window.addEventListener(
         },
         true,
 );
+// 結果
+var elem = document.getElementById("resultOfCommand");
+elem.innerHTML = "res.value";
