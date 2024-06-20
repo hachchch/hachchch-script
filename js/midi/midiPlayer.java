@@ -27,7 +27,7 @@ public class midiPlayer {
         String path = scanner.next();
 
         try {
-            File file = new File(path);
+            File file = new File("../../Sounds/NOC21.mid");
             Sequence sequence = MidiSystem.getSequence(file);
 
             sequencer.setSequence(sequence);
