@@ -22,6 +22,10 @@
    <source src="./Sounds/press.mp3" type="audio/mp3">
    <p>効果音は非対応です</p>
         </audio>
+        <audio id="SelectSound" preload="auto">
+   <source src="./Sounds/select.mp3" type="audio/mp3">
+   <p>効果音は非対応です</p>
+        </audio>
         <audio id="ceSound" preload="auto">
    <source src="./Sounds/clickEntity.mp3" type="audio/mp3">
    <p>効果音は非対応です</p>
@@ -35,6 +39,14 @@
                 function press() {
                     document.getElementById("PressSound").play();
                 }
+            function selectTrigger() {
+                document.getElementById('SelectSound').pause();
+                document.getElementById('SelectSound').currentTime = 0;
+                select();
+            }
+                function select() {
+                    document.getElementById("SelectSound").play();
+                }
                 function ceTrigger() {
                 document.getElementById('ceSound').pause();
                 document.getElementById('ceSound').currentTime = 0;
@@ -45,12 +57,12 @@
         </script>
       <h1 align = "center" class = "misaki">いろんなスクリプトを作っております。</h1><br>
         <div>
-            <p class = "misaki"><a href = './Scripts/index1.html' onclick="pressTrigger();">コマンドを入力してる気分になるやつ</a></p>
-            <p class = "misaki"><a href = './Scripts/index2.html' onclick="pressTrigger();">index2</a></p>
-            <p class = "misaki"><a href = './Scripts/index3.html' onclick="pressTrigger();">hachchchの音楽室</a></p>
+            <p class = "misaki"><a href = './Scripts/index1.html' onclick="selectTrigger();">コマンドを入力してる気分になるやつ</a></p>
+            <p class = "misaki"><a href = './Scripts/index2.html' onclick="selectTrigger();">index2</a></p>
+            <p class = "misaki"><a href = './Scripts/index3.html' onclick="selectTrigger();">hachchchの音楽室</a></p>
         </div>
         <div>
-            <p class = "misaki"><a href = 'https://hachchch.github.io/' onclick="pressTrigger();">ホームへ戻る</a></p>
+            <p class = "misaki"><a href = 'https://hachchch.github.io/2F/index.html' onclick="pressTrigger();">ホームへ戻る</a></p>
         </div>
         <p><img src="./Images/Flower.png" width="240" height="240"></p>
         <input align="right" onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="240" width="240"/>
