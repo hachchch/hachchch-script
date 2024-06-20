@@ -50,28 +50,30 @@ const remember = [];
           }
 
           function startMovement() {
-              const resultInput = res.value;
+              if (!rember.remind){
+              remember.remind = '';
+              }
               var i = res.value.length -1;
               if (res.value[i] == "↑") {
-                  remember += "u";
+                  remember.remind += "u";
               }else if (res.value[i] == "→") {
-                  remember += "r";
+                  remember.remind += "r";
               }else if (res.value[i] == "←") {
-                  remember += "l";
+                  remember.remind += "l";
               }else if (res.value[i] == "↓") {
-                  remember += "d";
+                  remember.remind += "d";
               }
               res.value = resultInput.substring(0, res.value.length -1);
               function forget (){
-                  remember = remember.substring(0, 0);
+                  remember.remind = '';
               }
               pressTrigger();
               if (res.value.length < 1){
                   stopRepeatTimer();
-                  if (remember == ["d","u","r"]){
+                  if (remember == ["dur"]){
                       kekka1();
                       forget();
-                  }else if (remember == ["l","u","l","r"]){
+                  }else if (remember == ["lulr"]){
                       kekka2();
                       forget();
                   }else{
