@@ -36,6 +36,7 @@ function cancel() {
 // ボタン
 const res = document.getElementById("commandResult");
 const remember = [];
+remember.remind = '';
 
           function input(value) {
               const inputedValue = value;
@@ -48,8 +49,6 @@ const remember = [];
               }
               res.value += enteredValue;
           }
-
-rember.remind = '';
 
           function startMovement() {
               var i = res.value.length -1;
