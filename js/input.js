@@ -53,6 +53,7 @@ const remember = [];
               if (!remember.remind) {
                   remember.remind = "";
               }
+              const resultInput = res.value;
               var i = res.value.length -1;
               if (res.value[i] == "↑") {
                   remember.remind += "u";
