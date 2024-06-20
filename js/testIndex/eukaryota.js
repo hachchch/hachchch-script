@@ -1,6 +1,6 @@
 class eukaryota {
         // メンバ変数
-        public String name = "Eukaryote";
+        public String name;
 
         // 引数ありのコンストラクタ
         public eukaryota(String name) {
@@ -8,7 +8,7 @@ class eukaryota {
         }
 
         // メソッド
-        public String testMethod(){
+        public String eukaryoticCell(){
                 return "Multicellular";
         }
 }
