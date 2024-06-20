@@ -42,12 +42,14 @@ function GAbgmRestart() {
                         MNbgmRestart();
                         TWbgmRestart();
                         KYbgmRestart();
+                        pressTrigger();
                         break;
                     case "c":
                         GAbgmRestart();
                         MNbgmRestart();
                         TWbgmRestart();
                         KYbgmRestart();
+                        pressTrigger();
                         break;
                     default:
                         return;
