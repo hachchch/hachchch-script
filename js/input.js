@@ -160,7 +160,7 @@ var kekka2 = function(){
     var elem = document.getElementById("resultOfCommand");
     elem.innerHTML = "戻ります...";
     selectTrigger();
-    window.location.href = "{https://hachchch.github.io/hachchch-script/}";
+    window.location.href = "{https://hachchch.github.io/hachchch-script/index.html}";
 }
 var kekkaHumei = function(){
     var elem = document.getElementById("resultOfCommand");
