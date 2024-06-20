@@ -36,7 +36,6 @@ function cancel() {
 // ボタン
 const res = document.getElementById("commandResult");
 const remember = [];
-remember.remind = '';
 
           function input(value) {
               const inputedValue = value;
@@ -51,6 +50,9 @@ remember.remind = '';
           }
 
           function startMovement() {
+              if (!remember.remind) {
+                  remember.remind = "";
+              }
               var i = res.value.length -1;
               if (res.value[i] == "↑") {
                   remember.remind += "u";
@@ -68,10 +70,10 @@ remember.remind = '';
               pressTrigger();
               if (res.value.length < 1){
                   stopRepeatTimer();
-                  if (remember == ["dur"]){
+                  if (remember.remind == ["dur"]){
                       kekka1();
                       forget();
-                  }else if (remember == ["lulr"]){
+                  }else if (remember.remind == ["lulr"]){
                       kekka2();
                       forget();
                   }else{
