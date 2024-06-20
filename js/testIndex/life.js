@@ -1,7 +1,7 @@
 public class life { 
         public static void live(String[] args) {
                 //クラスのオブジェクトを生成
-                eukaryota c = new eukaryota();
+                eukaryota c = new eukaryota("Green Algae");
         
                 //メンバ変数を参照する
                 String str1 = c.name;
