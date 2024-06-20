@@ -1,0 +1,9 @@
+@font-face {
+                font-family:'misakimincho';
+                src: url('./css/misaki_mincho.eot');
+                src: url('./css/misaki_mincho.woff') format('woff'),
+                    url('./css/misaki_mincho.ttf') format('truetype');
+            }
+            .misaki {
+                font-family:'misakimincho';
+            }
