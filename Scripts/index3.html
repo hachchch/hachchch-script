@@ -26,88 +26,53 @@
         </style>
     </head>
     <body>
+        <audio id="PressSound" preload="auto">
+   <source src="../Sounds/press.mp3" type="audio/mp3">
+   <p>効果音は非対応です</p>
+        </audio>
+        <audio id="SelectSound" preload="auto">
+   <source src="../Sounds/select.mp3" type="audio/mp3">
+   <p>効果音は非対応です</p>
+        </audio>
     <h class = "misaki header">hachchchの音楽室</h>
         <div id="note">
             <t class="misaki">音の停止はxかcの入力でもできるよ(PCの場合)。</t>
         </div>    
         <div>
-      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/vrtmkxkjpti2">緑藻</a>:</figcaption>
+      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/vrtmkxkjpti2" onclick='selectTrigger();'>緑藻</a>:</figcaption>
       <audio id="GA" controls src="../Sounds/Green Algae.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="GAbgmRestart();" /><br>
+            <input type="button" value="停止ボタン" onclick="GAbgmRestart(); pressTrigger();" /><br>
     <comment class = "misaki">藻が揺らめく淡水の中をイメージした曲です。<br>
     水面に浮く藻は宝石みたいできれいですよね。なので宝石みたいな音色を用いています。</comment>
             </div>
         <div>
-      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/ordovician-benthic">水深4000-6000</a>:</figcaption>
+      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/ordovician-benthic" onclick='selectTrigger();'>水深4000-6000</a>:</figcaption>
       <audio id="MN" controls src="../Sounds/Midnight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="MNbgmRestart();" /><br>
+            <input type="button" value="停止ボタン" onclick="MNbgmRestart(); pressTrigger();" /><br>
     <comment class = "misaki">水深4kmから6kmは光のない深海で、発光生物もほとんどいない真の暗闇が支配する層です。<br>
     ちなみにタイタニック号は水深3.8kmにあります。</comment>
             </div>
         <div>
-      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/aphotic-sphere">水深0-1000m</a>:</figcaption>
+      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/aphotic-sphere" onclick='selectTrigger();'>水深0-1000m</a>:</figcaption>
       <audio id="TW" controls src="../Sounds/Twilight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="TWbgmRestart();" /><br>
+            <input type="button" value="停止ボタン" onclick="TWbgmRestart(); pressTrigger();" /><br>
     <comment class = "misaki">有光層から中深層までの区間には驚くべきほど多様な生物がいる。<br>
     いざ、深海への冒険の始まりだ。</comment>
             </div>
          <div>
-      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/figqhm0djsit">Kyoto Way</a>:</figcaption>
+      <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/figqhm0djsit" onclick='selectTrigger();'>Kyoto Way</a>:</figcaption>
       <audio id="KY" controls src="../Sounds/Kyoto Way.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-             <input type="button" value="停止ボタン" onclick="KYbgmRestart();" /><br>
+             <input type="button" value="停止ボタン" onclick="KYbgmRestart(); pressTrigger();" /><br>
     <comment class = "misaki">京都をイメージした曲です。</comment>
             </div>
         
-      <script type="text/javascript">
-        function GAbgmRestart() {
-          document.getElementById('GA').pause();
-          document.getElementById('GA').currentTime = 0;
-        }
-        function MNbgmRestart() {
-          document.getElementById('MN').pause();
-          document.getElementById('MN').currentTime = 0;
-        }
-        function TWbgmRestart() {
-          document.getElementById('TW').pause();
-          document.getElementById('TW').currentTime = 0;
-        }
-        function KYbgmRestart() {
-          document.getElementById('KY').pause();
-          document.getElementById('KY').currentTime = 0;
-        }
-        window.addEventListener(
-            "keydown",
-            (event) => {
-                if (event.defaultPrevented) {
-                    return;
-                }
-                switch (event.key) {
-                    case "x":
-                        GAbgmRestart();
-                        MNbgmRestart();
-                        TWbgmRestart();
-                        KYbgmRestart();
-                        break;
-                    case "c":
-                        GAbgmRestart();
-                        MNbgmRestart();
-                        TWbgmRestart();
-                        KYbgmRestart();
-                        break;
-                    default:
-                        return;
-                }
-                event.preventDefault();
-            },
-            true,
-        );
-      </script>
+      <script type="text/javascript" src="../js/musicRoom.js"></script>
         <div>
             <h class="misaki g">その他</h>
         </div>
         <div>
             <br>
-            <h1 class = "misaki"><a href = 'https://hachchch.github.io/hachchch-script/'>戻る</a></h1>
+            <h1 class = "misaki"><a href = 'https://hachchch.github.io/hachchch-script/' onclick='pressTrigger();'>戻る</a></h1>
         </div>
     </body>
 </html>
