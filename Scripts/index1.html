@@ -38,6 +38,16 @@
    <source src="../Sounds/cancel.mp3" type="audio/mp3">
    <p>効果音は非対応です</p>
         </audio>
+        </audio>
+                <audio id="BGM1" preload="auto">
+   <source src="../Sounds/Green Algae.mp3" type="audio/mp3">
+   <p>BGMは非対応です</p>
+        </audio>
+        </audio>
+                <audio id="BGM2" preload="auto">
+   <source src="../Sounds/Midnight Zone.mp3" type="audio/mp3">
+   <p>BGMは非対応です</p>
+        </audio>
         <input type="text" name="commandResult" id="commandResult" placeholder="Command" readonly />
         <input type="button" value="↑" onclick="liveScreen('↑');ringTrigger();" />
         <input type="button" value="→" onclick="liveScreen('→');ringTrigger();" />
@@ -49,8 +59,14 @@
         <t class="misaki w" id="resultOfCommand">--</t>
         <div class="misaki w">
             <t>実装しているコマンド</t><br>
-            <t>→↑↓    何もおこらない、動作確認のため</t><br>
-            <t>→←↑←    で一つ前のページに戻る</t>
+            <t>↓↑↑←↓:BGM1の再生(別のページへ移動すると止まる)</t><br>
+            <t>→↑↓:BGM2の再生(別のページへ移動すると止まる)</t><br>
+            <t>↓↓→↓:BGMの停止(別のページへ移動すると止まる)</t><br>
+            <t>→←↑←:前のページに戻る</t><br>
+            <t>→↓↓↑:ヘミングウェイの名言を表示</t><br>
+            <t>↓↑←:褒めてもらえる。</t><br>
+            <t>←→↓↑:音楽室へ移動</t><br>
+            <t>↑↑↑↑:index2.htmlへ移動</t>
         </div>
         <div>
             <h1 class = "misaki"><a href = 'https://hachchch.github.io/hachchch-script/' onclick="pressTrigger();">戻る</a></h1>
