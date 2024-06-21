@@ -30,6 +30,18 @@ function GAbgmRestart() {
           document.getElementById('KY').pause();
           document.getElementById('KY').currentTime = 0;
         }
+        function GAbgmStart() {
+                    document.getElementById("GA").play();
+                }
+        function MNbgmStart() {
+                    document.getElementById("MN").play();
+                }
+        function TWbgmStart() {
+                    document.getElementById("TW").play();
+                }
+        function KYbgmStart() {
+                    document.getElementById("KY").play();
+                }
         window.addEventListener(
             "keydown",
             (event) => {
