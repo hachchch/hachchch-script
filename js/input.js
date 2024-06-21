@@ -71,12 +71,22 @@ const remember = [];
               pressTrigger();
               if (res.value.length < 1){
                   stopRepeatTimer();
-                  if (remember.remind == ["dur"]){
-                      kekka1();
+                  if (remember.remind == ["uddr"]){
+                      kekkaMeigen();
+                      forget();
+                  }else if (remember.remind == ["uuuu"]){
+                      kekkaIndex2();
+                      forget();
+                  }else if (remember.remind == ["udrl"]){
+                      kekkaIndex3();
                       forget();
                   }else if (remember.remind == ["lulr"]){
-                      kekka2();
+                      kekkaIndex();
                       forget();
+                  }else if(remember.remind == [""]){
+                      kekkaKuuhaku();
+                      forget();
+                  }
                   }else{
                       kekkaHumei();
                       forget();
@@ -151,16 +161,33 @@ window.addEventListener(
         true,
 );
 // 結果
-var kekka1 = function(){
+var kekkaKuuhaku = function(){
     var elem = document.getElementById("resultOfCommand");
-    elem.innerHTML = "なんか成功しました。";
+    elem.innerHTML = "--";
+    ringTrigger();
+}
+var kekkaMeigen = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "<a href='https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%83%8D%E3%82%B9%E3%83%88%E3%83%BB%E3%83%98%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%A6%E3%82%A7%E3%82%A4'>Never think that war, no matter how necessary, nor how justified, is not a crime.</a>";
     selectTrigger();
 }
-var kekka2 = function(){
+var kekkaIndex3 = function(){
     var elem = document.getElementById("resultOfCommand");
-    elem.innerHTML = "戻ります...";
+    elem.innerHTML = "index3.htmlへ...";
     selectTrigger();
-    window.location.href = "{https://hachchch.github.io/hachchch-script/index.html}";
+    window.location.href = "https://hachchch.github.io/hachchch-script/Scripts/index3.html";
+}
+var kekkaIndex = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "index.htmlへ...";
+    selectTrigger();
+    window.location.href = "https://hachchch.github.io/hachchch-script/index.html";
+}
+var kekkaIndex2 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "index2.htmlへ...";
+    selectTrigger();
+    window.location.href = "https://hachchch.github.io/hachchch-script/Scripts/index2.html";
 }
 var kekkaHumei = function(){
     var elem = document.getElementById("resultOfCommand");
