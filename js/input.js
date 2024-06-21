@@ -219,13 +219,13 @@ var kekkaIndex2 = function(){
 };
 var kekkaGetBgm1 = function(){
     var elem = document.getElementById("resultOfCommand");
-    elem.innerHTML = "BGM1を再生中";
+    elem.innerHTML = "BGM1を再生中♪";
     getBGM1();
     selectTrigger();
 };
 var kekkaGetBgm2 = function(){
     var elem = document.getElementById("resultOfCommand");
-    elem.innerHTML = "BGM2を再生中"
+    elem.innerHTML = "BGM2を再生中♪"
     getBGM2();
     selectTrigger();
 };
