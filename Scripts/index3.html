@@ -4,6 +4,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Music of hachchch</title>
         <link rel="stylesheet" type="text/css" href="../index.css">
+        <style type="text/css">
+            #toggle {
+                display: none;     
+            }
+            #toggle + .label::after {
+                content: url("../Images/Buttons/playButton.png");
+            }
+            #toggle:checked + .label::after {
+                content: url("../Images/Buttons/pauseButton.png");
+            }
+            /*
+            #toggle + .label::after {
+                content: url("../Images/Buttons/playButtonToggled.png");
+            }
+            #toggle:checked + .label::after {
+                content: url("../Images/Buttons/pauseButtonToggled.png");
+            }
+            */
+        </style>
         <style>
         body{
                 font-size: 16px;
@@ -41,28 +60,30 @@
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/vrtmkxkjpti2" onclick='selectTrigger();'>緑藻</a>:</figcaption>
       <audio id="GA" controls src="../Sounds/Green Algae.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="GAbgmRestart(); pressTrigger();" /><br>
+            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
     <comment class = "misaki">藻が揺らめく淡水の中をイメージした曲です。<br>
     水面に浮く藻は宝石みたいできれいですよね。なので宝石みたいな音色を用いています。</comment>
             </div>
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/ordovician-benthic" onclick='selectTrigger();'>水深4000-6000</a>:</figcaption>
       <audio id="MN" controls src="../Sounds/Midnight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="MNbgmRestart(); pressTrigger();" /><br>
+            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
     <comment class = "misaki">水深4kmから6kmは光のない深海で、発光生物もほとんどいない真の暗闇が支配する層です。<br>
     ちなみにタイタニック号は水深3.8kmにあります。</comment>
             </div>
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/aphotic-sphere" onclick='selectTrigger();'>水深0-1000m</a>:</figcaption>
       <audio id="TW" controls src="../Sounds/Twilight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input type="button" value="停止ボタン" onclick="TWbgmRestart(); pressTrigger();" /><br>
+            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
+            <input type="checkbox" id="toggle">
+            <label class="label" for="toggle"></label>
     <comment class = "misaki">有光層から中深層までの区間には驚くべきほど多様な生物がいる。<br>
     いざ、深海への冒険の始まりだ。</comment>
             </div>
          <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/figqhm0djsit" onclick='selectTrigger();'>Kyoto Way</a>:</figcaption>
       <audio id="KY" controls src="../Sounds/Kyoto Way.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-             <input type="button" value="停止ボタン" onclick="KYbgmRestart(); pressTrigger();" /><br>
+             <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
     <comment class = "misaki">京都をイメージした曲です。</comment>
             </div>
         
