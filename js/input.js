@@ -92,7 +92,6 @@ const remember = [];
                       forget();
                   }
               }
-              }
           let nIntervId;
 
               function repeatTimer() {
