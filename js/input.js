@@ -33,6 +33,23 @@ function cancelTrigger() {
 function cancel() {
    document.getElementById("CancelSound").play();
 }
+// BGM
+function getBGM1() {
+    document.getElementById('BGM2').pause();
+    document.getElementById('BGM2').currentTime = 0;
+   document.getElementById("BGM1").play();
+}
+function getBGM2() {
+    document.getElementById('BGM1').pause();
+    document.getElementById('BGM1').currentTime = 0;
+   document.getElementById("BGM2").play();
+}
+function resetBGM() {
+    document.getElementById('BGM1').pause();
+    document.getElementById('BGM1').currentTime = 0;
+    document.getElementById('BGM2').pause();
+    document.getElementById('BGM2').currentTime = 0;
+}
 // ボタン
 const res = document.getElementById("commandResult");
 const remember = [];
@@ -74,6 +91,15 @@ const remember = [];
                   if (remember.remind == ["uddr"]){
                       kekkaMeigen();
                       forget();
+                  }else if (remember.remind == ["dluud"]){
+                      kekkaGetBgm1();
+                      forget();
+                  }else if (remember.remind == ["dur"]){
+                      kekkaGetBgm2();
+                      forget();
+                  }else if (remember.remind == ["drdd"]){
+                      kekkaResetBgm();
+                      forget();
                   }else if (remember.remind == ["uuuu"]){
                       kekkaIndex2();
                       forget();
@@ -81,6 +107,9 @@ const remember = [];
                       kekkaIndex3();
                       forget();
                   }else if (remember.remind == ["lulr"]){
+                      kekkaIndex();
+                      forget();
+                  }else if (remember.remind == ["lud"]){
                       kekkaIndex();
                       forget();
                   }else if(remember.remind == [""]){
@@ -149,7 +178,7 @@ window.addEventListener(
                                 ringTrigger();
                                 break;
                         case "Backspace":
-                                res.value = resultInput.substring(0, res.value.length -1);
+                                res.value = res.value.substring(0, res.value.length -1);
                                 ringTrigger();
                                 break;
                         default:
@@ -167,7 +196,7 @@ var kekkaKuuhaku = function(){
 };
 var kekkaMeigen = function(){
     var elem = document.getElementById("resultOfCommand");
-    elem.innerHTML = "<a href='https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%83%8D%E3%82%B9%E3%83%88%E3%83%BB%E3%83%98%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%A6%E3%82%A7%E3%82%A4'>Never think that war, no matter how necessary, nor how justified, is not a crime.</a>";
+    elem.innerHTML = "<a href='https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%BC%E3%83%8D%E3%82%B9%E3%83%88%E3%83%BB%E3%83%98%E3%83%9F%E3%83%B3%E3%82%B0%E3%82%A6%E3%82%A7%E3%82%A4' onclick='selectTrigger();'>Never think that war, no matter how necessary, nor how justified, is not a crime.</a>";
     selectTrigger();
 };
 var kekkaIndex3 = function(){
@@ -187,6 +216,29 @@ var kekkaIndex2 = function(){
     elem.innerHTML = "index2.htmlへ...";
     selectTrigger();
     window.location.href = "https://hachchch.github.io/hachchch-script/Scripts/index2.html";
+};
+var kekkaGetBgm1 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "BGM1を再生中";
+    getBGM1();
+    selectTrigger();
+};
+var kekkaGetBgm2 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "BGM2を再生中"
+    getBGM2();
+    selectTrigger();
+};
+var kekkaResetBGM = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "BGMを停止しました。";
+    resetBGM();
+    selectTrigger();
+};
+var kekkaText1 = function(){
+    var elem = document.getElementById("resultOfCommand");
+    elem.innerHTML = "生きてて偉い。";
+    selectTrigger();
 };
 var kekkaHumei = function(){
     var elem = document.getElementById("resultOfCommand");
