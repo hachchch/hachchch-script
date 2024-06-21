@@ -30,6 +30,18 @@ function GAbgmRestart() {
           document.getElementById('KY').pause();
           document.getElementById('KY').currentTime = 0;
         }
+        function GAbgmPaused() {
+                    document.getElementById("GA").pause();
+                }
+        function MNbgmPaused() {
+                    document.getElementById("MN").pause();
+                }
+        function TWbgmPaused() {
+                    document.getElementById("TW").pause();
+                }
+        function KYbgmPaused() {
+                    document.getElementById("KY").pause();
+                }
         function GAbgmStart() {
                     document.getElementById("GA").play();
                 }
