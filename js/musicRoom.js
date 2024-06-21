@@ -37,6 +37,22 @@ function GAbgmRestart() {
                     return;
                 }
                 switch (event.key) {
+                    case "1":
+                        GAbgmStart();
+                        selectTrigger();
+                        break;
+                    case "2":
+                        MNbgmStart();
+                        selectTrigger();
+                        break;
+                    case "3":
+                        TWbgmStart();
+                        selectTrigger();
+                        break;
+                    case "4":
+                        KYbgmStart();
+                        selectTrigger();
+                        break;
                     case "x":
                         GAbgmRestart();
                         MNbgmRestart();
