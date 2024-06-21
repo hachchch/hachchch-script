@@ -5,23 +5,58 @@
         <title>Music of hachchch</title>
         <link rel="stylesheet" type="text/css" href="../index.css">
         <style type="text/css">
-            #toggle {
+            #toggleGA {
                 display: none;     
             }
-            #toggle + .label::after {
-                content: url("../Images/Buttons/playButton.png");
+            #toggleGA + .label::after {
+                GAbgmPaused();
+                content: url("../Images/playButton.png");
             }
-            #toggle:checked + .label::after {
-                content: url("../Images/Buttons/pauseButton.png");
+            #toggleGA:checked + .label::after {
+                GAbgmStart();
+                content: url("../Images/pauseButton.png");
             }
             /*
             #toggle + .label::after {
-                content: url("../Images/Buttons/playButtonToggled.png");
+                content: url("../Images/playButtonToggled.png");
             }
             #toggle:checked + .label::after {
-                content: url("../Images/Buttons/pauseButtonToggled.png");
+                content: url("../Images/pauseButtonToggled.png");
             }
             */
+            #toggleMN {
+                display: none;     
+            }
+            #toggleMN + .label::after {
+                MNbgmPaused();
+                content: url("../Images/playButton.png");
+            }
+            #toggleMN:checked + .label::after {
+                MNbgmStart();
+                content: url("../Images/pauseButton.png");
+            }
+            #toggleTW {
+                display: none;     
+            }
+            #toggleTW + .label::after {
+                TWbgmPaused();
+                content: url("../Images/playButton.png");
+            }
+            #toggleTW:checked + .label::after {
+                TWbgmStart();
+                content: url("../Images/pauseButton.png");
+            }
+            #toggleKY {
+                display: none;     
+            }
+            #toggleKY + .label::after {
+                KYbgmPaused();
+                content: url("../Images/playButton.png");
+            }
+            #toggleKY:checked + .label::after {
+                KYbgmStart();
+                content: url("../Images/pauseButton.png");
+            }
         </style>
         <style>
         body{
@@ -60,30 +95,36 @@
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/vrtmkxkjpti2" onclick='selectTrigger();'>緑藻</a>:</figcaption>
       <audio id="GA" controls src="../Sounds/Green Algae.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
+            <input type="checkbox" id="toggle">
+            <label class="label" for="toggle"></label>
+            <br>
     <comment class = "misaki">藻が揺らめく淡水の中をイメージした曲です。<br>
     水面に浮く藻は宝石みたいできれいですよね。なので宝石みたいな音色を用いています。</comment>
             </div>
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/ordovician-benthic" onclick='selectTrigger();'>水深4000-6000</a>:</figcaption>
       <audio id="MN" controls src="../Sounds/Midnight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
+            <input type="checkbox" id="toggle">
+            <label class="label" for="toggle"></label>
+            <br>
     <comment class = "misaki">水深4kmから6kmは光のない深海で、発光生物もほとんどいない真の暗闇が支配する層です。<br>
     ちなみにタイタニック号は水深3.8kmにあります。</comment>
             </div>
         <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/aphotic-sphere" onclick='selectTrigger();'>水深0-1000m</a>:</figcaption>
       <audio id="TW" controls src="../Sounds/Twilight Zone.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-            <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
             <input type="checkbox" id="toggle">
             <label class="label" for="toggle"></label>
+            <br>
     <comment class = "misaki">有光層から中深層までの区間には驚くべきほど多様な生物がいる。<br>
     いざ、深海への冒険の始まりだ。</comment>
             </div>
          <div>
       <figcaption class = "misaki g"><a href = "https://soundcloud.com/yddwohjlhinu/figqhm0djsit" onclick='selectTrigger();'>Kyoto Way</a>:</figcaption>
       <audio id="KY" controls src="../Sounds/Kyoto Way.mp3">お使いのブラウザは曲の再生に対応していません</audio>
-             <input onclick="ceTrigger();" type="image" src="./Images/Pixel.png" height="50" width="50"/><br>
+             <input type="checkbox" id="toggle">
+            <label class="label" for="toggle"></label>
+            <br>
     <comment class = "misaki">京都をイメージした曲です。</comment>
             </div>
         
