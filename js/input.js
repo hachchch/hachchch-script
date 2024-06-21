@@ -110,7 +110,7 @@ const remember = [];
                       kekkaIndex();
                       forget();
                   }else if (remember.remind == ["lud"]){
-                      kekkaIndex();
+                      kekkaText();
                       forget();
                   }else if(remember.remind == [""]){
                       kekkaKuuhaku();
