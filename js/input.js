@@ -110,7 +110,7 @@ const remember = [];
                       kekkaIndex();
                       forget();
                   }else if (remember.remind == ["lud"]){
-                      kekkaText();
+                      kekkaText1();
                       forget();
                   }else if(remember.remind == [""]){
                       kekkaKuuhaku();
@@ -178,8 +178,8 @@ window.addEventListener(
                                 ringTrigger();
                                 break;
                         case "Backspace":
-                                res.value = res.value.substring(0, res.value.length -1);
                                 ringTrigger();
+                                res.value = res.value.substring(0, res.value.length -1);
                                 break;
                         default:
                                 return;
@@ -229,7 +229,7 @@ var kekkaGetBgm2 = function(){
     getBGM2();
     selectTrigger();
 };
-var kekkaResetBGM = function(){
+var kekkaResetBgm = function(){
     var elem = document.getElementById("resultOfCommand");
     elem.innerHTML = "BGMを停止しました。";
     resetBGM();
