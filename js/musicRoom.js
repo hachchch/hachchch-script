@@ -54,6 +54,78 @@ function GAbgmRestart() {
         function KYbgmStart() {
                     document.getElementById("KY").play();
                 }
+// ボタン
+const q = [];
+q.GA = "";
+q.MN = "";
+q.TW = "";
+q.KY = "";
+
+const switchImg = document.getElementById("GAButton");
+function changeImg(){
+switchImg.classList.toggle("on_Button");
+q.GA += 'a';
+}
+switchImg.addEventListener("click",changeImg);
+
+const switchImg = document.getElementById("MNButton");
+function changeImg(){
+q.MN += 'a';
+switchImg.classList.toggle("on_Button");
+}
+switchImg.addEventListener("click",changeImg);
+
+const switchImg = document.getElementById("TWButton");
+function changeImg(){
+switchImg.classList.toggle("on_Button");
+q.TW += 'a';
+}
+switchImg.addEventListener("click",changeImg);
+
+const switchImg = document.getElementById("KYButton");
+function changeImg(){
+switchImg.classList.toggle("on_Button");
+q.KY += 'a';
+}
+switchImg.addEventListener("click",changeImg);
+// ボタン関数
+function GAButtonWork() {
+  if (q.GA.length = 0){
+    GAbgmPaused();
+    pressTrigger();
+}else{
+    GAbgmStart();
+    selectTrigger();
+}
+};
+function MNButtonWork() {
+  if (q.MN.length = 0){
+    MNbgmPaused();
+    pressTrigger();
+}else{
+    MNbgmStart();
+    selectTrigger();
+}
+};
+function TWButtonWork() {
+  if (q.TW.length = 0){
+    TWbgmPaused();
+    pressTrigger();
+}else{
+    TWbgmStart();
+    selectTrigger();
+}
+};
+function KYButtonWork() {
+  if (q.KY.length = 0){
+    KYbgmPaused();
+    pressTrigger();
+}else{
+    KYbgmStart();
+    selectTrigger();
+}
+};
+// キーバインド
         window.addEventListener(
             "keydown",
             (event) => {
