@@ -63,31 +63,31 @@ q.KY = "";
 
 const switchImgGA = document.getElementById("GAButton");
 function changeImgGA(){
-switchImg.classList.toggle("on_Button");
+switchImgGA.classList.toggle("on_Button");
 q.GA += 'a';
 }
-switchImg.addEventListener("click",changeImg);
+switchImgGA.addEventListener("click",changeImgGA);
 
 const switchImgMN = document.getElementById("MNButton");
 function changeImgMN(){
 q.MN += 'a';
-switchImg.classList.toggle("on_Button");
+switchImgMN.classList.toggle("on_Button");
 }
-switchImg.addEventListener("click",changeImg);
+switchImgMN.addEventListener("click",changeImgMN);
 
 const switchImgTW = document.getElementById("TWButton");
 function changeImgTW(){
-switchImg.classList.toggle("on_Button");
+switchImgTW.classList.toggle("on_Button");
 q.TW += 'a';
 }
-switchImg.addEventListener("click",changeImg);
+switchImgTW.addEventListener("click",changeImgTW);
 
 const switchImgKY = document.getElementById("KYButton");
 function changeImgKY(){
 switchImg.classList.toggle("on_Button");
 q.KY += 'a';
 }
-switchImg.addEventListener("click",changeImg);
+switchImgKY.addEventListener("click",changeImgKY);
 // ボタン関数
 function GAButtonWork() {
   if (q.GA.length = 0){
