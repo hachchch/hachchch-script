@@ -61,29 +61,29 @@ q.MN = "";
 q.TW = "";
 q.KY = "";
 
-const switchImg = document.getElementById("GAButton");
-function changeImg(){
+const switchImgGA = document.getElementById("GAButton");
+function changeImgGA(){
 switchImg.classList.toggle("on_Button");
 q.GA += 'a';
 }
 switchImg.addEventListener("click",changeImg);
 
-const switchImg = document.getElementById("MNButton");
-function changeImg(){
+const switchImgMN = document.getElementById("MNButton");
+function changeImgMN(){
 q.MN += 'a';
 switchImg.classList.toggle("on_Button");
 }
 switchImg.addEventListener("click",changeImg);
 
-const switchImg = document.getElementById("TWButton");
-function changeImg(){
+const switchImgTW = document.getElementById("TWButton");
+function changeImgTW(){
 switchImg.classList.toggle("on_Button");
 q.TW += 'a';
 }
 switchImg.addEventListener("click",changeImg);
 
-const switchImg = document.getElementById("KYButton");
-function changeImg(){
+const switchImgKY = document.getElementById("KYButton");
+function changeImgKY(){
 switchImg.classList.toggle("on_Button");
 q.KY += 'a';
 }
