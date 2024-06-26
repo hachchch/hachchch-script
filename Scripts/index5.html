@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>hachchch Simple Physics</title>
+        <style>
+            body{
+                background-color: black;
+                color: white;
+                }
+        </style>
+    </head>
+    <body>
+        <p>無数のボールが跳ねるよ (おかわり自由)<br>
+        ボール追加ボタンの隣にある入力枠に好きな値を入力して、よりどり好みのボールを呼び出せるよ。
+        </p>
+         <canvas class="canvas" width="1342" height="549"></canvas>
+            <p>設定:</p>
+        <t>時間の早さ</t>
+        <input type="number" name="Time Rate" id="timeRate" placeholder="停止中..." />
+        <input type="button" value="1" onclick="liveScreen(1);" />
+        <input type="button" value="2" onclick="liveScreen(2);" />
+        <input type="button" value="3" onclick="liveScreen(3);" />
+        <input type="button" value="4" onclick="liveScreen(4);" />
+        <input type="button" value="5" onclick="liveScreen(5);" />
+        <input type="button" value="6" onclick="liveScreen(6);" />
+        <input type="button" value="7" onclick="liveScreen(7);" />
+        <input type="button" value="8" onclick="liveScreen(8);" />
+        <input type="button" value="9" onclick="liveScreen(9);" />
+        <input type="button" value="0" onclick="liveScreen(0);" />
+        <input type="button" value="." onclick="liveScreen('.');" />
+        <input type="button" value="停止" onclick="delScreen();" /><br>
+        <input type="button" id="addBallButton" value="追加" onclick="addBall();" disabled />
+        <input type="number" name="Ball X" id="setBallX" placeholder="ボールを射出するx座標" />
+        <input type="number" name="Ball Y" id="setBallY" placeholder="ボールを射出するy座標" />
+        <input type="number" name="Ball Angle" id="setBallAngle" placeholder="ボールを射出する角度" />
+        <input type="number" name="Ball Velocity0" id="setBallV0" placeholder="初速度" />
+        <input type="number" name="Ball Velocity2" id="setBallV2" placeholder="加速度" />
+        <input type="number" name="Ball Radius" id="setBallRadius" placeholder="半径" />
+        <input type="text" name="Ball Color" id="setBallColor" placeholder="色" /><br>
+        <input type="button" id="startButton" value="Start" onclick="start();" />
+        <input type="button" value="Test" onclick="test();" />
+        <script type="text/javascript">
+            const p = Math.PI;
+            const division = document.getElementById("timeRate");
+            division.value=1;
+            function input(value) {
+                const inputedValue = value;
+                division.value = inputedValue;
+            }
+            function liveScreen(enteredValue) {
+                if (!division.value) {
+                    division.value = "";
+                }
+                division.value += enteredValue;
+            }
+            function delScreen(){
+                division.value=division.value.substring(0, 0)
+                division.value='';
+            }
+            
+            function start(){
+                translate();
+                    // y = 274.5;
+                    // x = 671;
+                document.getElementById("startButton").disabled = true;
+                document.getElementById("addBallButton").disabled = false;
+            }
+            // canvas
+            const canvas = document.querySelector('.canvas'); // Canvasの取得
+            const context = canvas.getContext('2d');
+            canvas.style.border = "3px solid";
+
+            const balls = [];
+            
+            balls.push({x:150, y:150, r: 30, periodx: 1, periody: 1, color: 'blue', v0:10 , v2:0, t0: 0, t: 0});
+            balls.push({x:350, y:350, r: 30, periodx: 1, periody: -1, color: 'red', v0:10 , v2:0, t0: 0, t: 0});
+
+            const addBallX = document.getElementById("setBallX");
+            const addBallY = document.getElementById("setBallY");
+            const addBallAngle = document.getElementById("setBallAngle");
+            const addBallV0 = document.getElementById("setBallV0");
+            const addBallV2 = document.getElementById("setBallV2");
+            const addBallRadius = document.getElementById("setBallRadius");
+            const addBallColor = document.getElementById("setBallColor");
+            function addBall(){
+                if(!addBallX.value){
+                    addBallX.value=671;
+                }if(!addBallY.value){
+                    addBallY.value=274.5;
+                }if(!addBallAngle.value){
+                    addBallAngle.value=315;
+                }if(!addBallV0.value){
+                    addBallV0.value=10;
+                }if(!addBallV2.value){
+                    addBallV2.value=0;
+                }if(!addBallRadius.value){
+                    addBallRadius.value=30;
+                }if(!addBallColor.value){
+                    addBallColor.value='white';
+                }
+                addBallX.set = parseInt(addBallX.value);
+                addBallY.set = parseInt(addBallY.value);
+                addBallAngle.setSin = Math.sin((parseInt(addBallAngle.value)/180)*p);
+                addBallAngle.setCos = Math.cos((parseInt(addBallAngle.value)/180)*p);
+                addBallV0.set=parseInt(addBallV0.value);
+                addBallV2.set=parseInt(addBallV2.value);
+                addBallRadius.set=parseInt(addBallRadius.value);
+                addBallColor.set=addBallColor.value;
+                balls.push({x:addBallX.set, y:addBallY.set, r:addBallRadius.set, periodx:addBallAngle.setSin, periody:addBallAngle.setCos, color:addBallColor.set, v0: addBallV0.set, v2:addBallV2.set, t0: Date.now()/1000, t:0});
+            }
+            
+            function translate() {
+                context.clearRect(0,0,canvas.width, canvas.height);
+                for(const b of balls){
+                    b.t = ((Date.now()/1000)-b.t0)*division.value;
+                if (b.x-b.r < 0) {
+                    if (b.v0+b.v2*b.t > 0){
+                    b.periodx = Math.sin(p/2);
+                    }else{
+                    b.periodx = -Math.sin(p/2);
+                    }
+                    }if (canvas.width < b.x+b.r) {
+                    if (b.v0+b.v2*b.t > 0){
+                    b.periodx = -Math.sin(p/2);
+                    }else{
+                    b.periodx = Math.sin(p/2);
+                    }
+                    }if (b.y-b.r< 0) {
+                    if (b.v0+b.v2*b.t > 0){
+                    b.periody= Math.cos(p/4);
+                    }else{
+                    b.periody= -Math.cos(p/4);
+                    }
+                    }if (canvas.height< b.y+b.r) {
+                    if (b.v0+b.v2*b.t > 0){
+                    b.periody = -Math.cos(p/4);
+                    }else{
+                    b.periody = Math.cos(p/4);
+                    }
+                    }
+                    /*この辺に小球の衝突を演算したい。*/
+                b.x=b.x+b.periodx*(b.v0*division.value+b.v2*b.t);
+                b.y=b.y+b.periody*(b.v0*division.value+b.v2*b.t);
+                }
+                for(const b of balls){
+                context.fillStyle = b.color;
+                context.beginPath();
+                context.arc(b.x,b.y,b.r,0,2*Math.PI);
+                context.fill();
+                }
+                requestAnimationFrame(translate);
+            }
+            function test() {
+                alert(addBallX);
+            }
+        </script>
+    </body>
+</html>
