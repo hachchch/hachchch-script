@@ -13,7 +13,7 @@
                 }
         </style>
     </head>
-    <body>
+    <body class="misaki">
         <audio id="ClickSound" preload="auto">
    <source src="../Sounds/cursor.mp3" type="audio/mp3">
    <p>効果音は非対応です</p>
@@ -37,19 +37,19 @@
             <p>設定:</p>
         <t>時間の早さ</t>
         <input type="number" name="Time Rate" id="timeRate" placeholder="停止中..." />
-        <input type="button" value="1" onclick="liveScreen(1);" />
-        <input type="button" value="2" onclick="liveScreen(2);" />
-        <input type="button" value="3" onclick="liveScreen(3);" />
-        <input type="button" value="4" onclick="liveScreen(4);" />
-        <input type="button" value="5" onclick="liveScreen(5);" />
-        <input type="button" value="6" onclick="liveScreen(6);" />
-        <input type="button" value="7" onclick="liveScreen(7);" />
-        <input type="button" value="8" onclick="liveScreen(8);" />
-        <input type="button" value="9" onclick="liveScreen(9);" />
-        <input type="button" value="0" onclick="liveScreen(0);" />
-        <input type="button" value="." onclick="liveScreen('.');" />
-        <input type="button" value="停止" onclick="delScreen();" /><br>
-        <input type="button" id="addBallButton" value="追加" onclick="addBall();" disabled />
+        <input type="button" value="1" onclick="liveScreen(1); ringTrigger();" />
+        <input type="button" value="2" onclick="liveScreen(2); ringTrigger();" />
+        <input type="button" value="3" onclick="liveScreen(3); ringTrigger();" />
+        <input type="button" value="4" onclick="liveScreen(4); ringTrigger();" />
+        <input type="button" value="5" onclick="liveScreen(5); ringTrigger();" />
+        <input type="button" value="6" onclick="liveScreen(6); ringTrigger();" />
+        <input type="button" value="7" onclick="liveScreen(7); ringTrigger();" />
+        <input type="button" value="8" onclick="liveScreen(8); ringTrigger();" />
+        <input type="button" value="9" onclick="liveScreen(9); ringTrigger();" />
+        <input type="button" value="0" onclick="liveScreen(0); ringTrigger();" />
+        <input type="button" value="." onclick="liveScreen('.'); ringTrigger();" />
+        <input type="button" value="停止" onclick="delScreen(); cancelTrigger();" /><br>
+        <input type="button" id="addBallButton" value="追加" onclick="addBall(); selectTrigger();" disabled />
         <input type="number" name="Ball X" id="setBallX" placeholder="ボールを射出するx座標" />
         <input type="number" name="Ball Y" id="setBallY" placeholder="ボールを射出するy座標" />
         <input type="number" name="Ball Angle" id="setBallAngle" placeholder="ボールを射出する角度" />
@@ -61,7 +61,7 @@
         <input type="button" value="Test" onclick="test();" />
         <script type="text/javascript" src="../js/simplePhysics.js"></script>
         <div>
-            <p><a href = '../index.html'>戻る</a></p>
+            <p><a href = '../index.html' onclick="pressTrigger();">戻る</a></p>
         </div>
     </body>
 </html>
