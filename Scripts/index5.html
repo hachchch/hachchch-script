@@ -49,7 +49,7 @@
         <input type="button" value="0" onclick="liveScreen(0); ringTrigger();" />
         <input type="button" value="." onclick="liveScreen('.'); ringTrigger();" />
         <input type="button" value="停止" onclick="delScreen(); cancelTrigger();" /><br>
-        <input type="button" id="addBallButton" value="追加" onclick="addBall(); selectTrigger();" disabled />
+        <input type="button" id="addBallButton" value="追加" onclick="addBall(); ringTrigger();" disabled />
         <input type="number" name="Ball X" id="setBallX" placeholder="ボールを射出するx座標" />
         <input type="number" name="Ball Y" id="setBallY" placeholder="ボールを射出するy座標" />
         <input type="number" name="Ball Angle" id="setBallAngle" placeholder="ボールを射出する角度" />
@@ -57,8 +57,7 @@
         <input type="number" name="Ball Velocity2" id="setBallV2" placeholder="加速度" />
         <input type="number" name="Ball Radius" id="setBallRadius" placeholder="半径" />
         <input type="text" name="Ball Color" id="setBallColor" placeholder="色" /><br>
-        <input type="button" id="startButton" value="Start" onclick="start();" />
-        <input type="button" value="Test" onclick="test();" />
+        <input type="button" id="startButton" value="開始" onclick="start(); selectTrigger();" />
         <script type="text/javascript" src="../js/simplePhysics.js"></script>
         <div>
             <p><a href = '../index.html' onclick="pressTrigger();">戻る</a></p>
