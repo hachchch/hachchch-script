@@ -1,40 +1,607 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Physics</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8 " />
+        <title>クリッカーゲームver1.0</title>
         <link rel="stylesheet" type="text/css" href="../index.css">
-        <style>
-            body{
-                font-size: 16px;
-                margin: 40px;
-                background-color: #1f1e29;
-                color: white;
-                }
-        </style>
     </head>
+    <style>
+        .main {
+            position: relative;
+            top:0;
+        }
+        .upgrades {
+            position: relative;
+        }
+        .buildings {
+            position: relative;
+        }
+        #notifications {
+            position: absolute;
+            right:0;
+            bottom:0;
+        }
+        .techTree {
+            position: absolute;
+            right: 0;
+        }
+        .techTree:hover .description {
+            display: inline;
+        }
+        .description {
+            font-size:30px;
+            display: none;
+            text-align: left;
+        }
+        .row1{
+            position: absolute;
+            right: 600px;
+        }
+        .row2{
+            position: absolute;
+            right: 300px;
+        }
+        .row3{
+            position: absolute;
+            right: 0px;
+        }
+    </style>
     <body class="misaki">
-        <p>無限バウンドスーパーボール</p>
-         <canvas class="canvas" width="1342" height="549"></canvas>
-            <p>ここに説明文</p>
-        <t>時間の早さ</t>
-        <input type="text" name="Time Rate" id="timeRate" placeholder="0" readonly />
-        <input type="button" value="1" onclick="liveScreen(1);" />
-        <input type="button" value="2" onclick="liveScreen(2);" />
-        <input type="button" value="3" onclick="liveScreen(3);" />
-        <input type="button" value="4" onclick="liveScreen(4);" />
-        <input type="button" value="5" onclick="liveScreen(5);" />
-        <input type="button" value="6" onclick="liveScreen(6);" />
-        <input type="button" value="7" onclick="liveScreen(7);" />
-        <input type="button" value="8" onclick="liveScreen(8);" />
-        <input type="button" value="9" onclick="liveScreen(9);" />
-        <input type="button" value="0" onclick="liveScreen(0);" />
-        <input type="button" value="Delete" onclick="delScreen();" />
-        <input type="button" value="Start" onclick="start();" />
-        <input type="button" value="Test" onclick="test();" />
-        <script type="text/javascript" src="../js/Superball.js"></script>
-        <div>
-            <p><a href = '../index.html'>戻る</a></p>
+        <div class="main">
+        <div class="techTree">
+        <canvas class="canvas" width="800" height="2000"></canvas>
         </div>
+        クリック:<br>
+        人口:<t id="upgradedCounter">1</t>人
+        <progress id='progressBar' max='100' value='0'>0%</progress>
+        <input type="button" value="考える" onclick="changeProgress()" /><br>
+        統計:<br>
+        <input type="text" id="powerCounter" placeholder="発想力" readonly /><br>
+        <input type="text" id="progressedCounter" placeholder="発想" readonly /><br>
+        <input type="text" id="thoughtCounter" placeholder="思考/毎秒" readonly /><br>
+        <input type="text" id="knowledgeCounter" placeholder="知識" readonly /><br>
+        <input type="text" id="clickCounter" placeholder="総クリック" readonly /><br>
+        </div>
+        <div class="upgrades">
+        強化:<br>
+        コスト
+        <input type="number" id="upgradeCostCounter" placeholder="発想力強化コスト" readonly /><br>
+        <input type="button" value="+1 発想力" onclick="upgrade(1)" />
+        <input type="number" id="anyInputed" placeholder="自然数のみ" onInput="numberCheck()" />
+        <input type="button" id="anyUpgrade" value="+(数字入力) 発想力" onclick="upgrade(parseInt(any.value))" disabled />
+        <input type="button" value="+Max発想力" onclick="upgradeMax()" /><br>
+        テキスト:<t id="messageBox">--</t><br>
+        </div>
+        <div class="buildings">
+        発想の生産<br>
+        <input id="storyButton" type="button" value="追加" onclick="add(1)" disabled />
+        伝承:<t id="storyElem">--</t><br>
+        <input id="artButton" type="button" value="追加" onclick="add(2)" disabled />
+        壁画:<t id="artElem">--</t><br>
+        <input id="Button" type="button" value="追加" onclick="add(3)" disabled />
+        神殿:<t id="palaceElem">--</t><br>
+        <input type="button" value="追加" onclick="add(4)" disabled />
+        劇場:<t id="theatreElem">--</t><br>
+        <input type="button" value="追加" onclick="add(5)" disabled />
+        放送局:<t id="radioElem">--</t><br>
+        <input type="button" value="追加" onclick="add(6)" disabled />
+        SNS:<t id="socialMediaElem">--</t><br>
+        知識の生産<br>
+        図書館:<t id="human">--</t><br>
+        大学:<t id="human">--</t><br>
+        国立大学:<t id="human">--</t><br>
+        研究所:<t id="human">--</t><br>
+        研究機関:<t id="human">--</t><br>
+        財産の生産<br>
+        <input type="button" value="追加" onclick="add(farm)" />
+        農場:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(workshop)" />
+        工房:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(market)" />
+        市場:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(bank)" />
+        銀行:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(factory)" />
+        工場:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(generator)" />
+        発電所:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(stockExchange)" />
+        証券取引所:<t id="human">--</t><br>
+        <input type="button" value="追加" onclick="add(informationIndustry)" />
+        情報産業:<t id="human">--</t>
+        <div id="notifications">
+        </div>
+        </div>
+        <script type="text/javascript">
+            const progress = document.getElementById("progressBar");
+            const click = document.getElementById("clickCounter");
+            const progressed = document.getElementById("progressedCounter");
+            const power = document.getElementById("powerCounter");
+            const message = document.getElementById("messageBox");
+            const any = document.getElementById("anyInputed");
+            const cost = document.getElementById("upgradeCostCounter");
+            const thought = document.getElementById("thoughtCounter");
+            const neuron = document.getElementById("upgradedCounter");
+            const story = document.getElementById("storyElem");
+            const art = document.getElementById("artElem");
+            const palace = document.getElementById("palaceElem");
+            const theatre = document.getElementById("theatreElem");
+            const radio = document.getElementById("radioElem");
+            const socialMedia = document.getElementById("socialMediaElem");
+            const makeNotification = document.getElementById("notifications");
+            const buildings = [];
+            const techs = [];
+            const startTime = Date.now();
+            let time=0;
+            let nIntervId;
+            power.boost = 1;
+              function repeatTimer(){
+                      if(!nIntervId){
+                      nIntervId = setInterval(timeEvent, 100);
+                  }
+            }
+            function timeEvent(){
+                time=Math.round((Date.now()-startTime)/1000);
+                if(parseInt(thought.value)>0){
+                progress.get=eval(progress.get+thought.value/10);
+                progress.value=parseInt(progress.get);
+                if(parseInt(progress.value)>99){
+                    if(!progressed.stats){
+                    progressed.stats=0;
+                    progressed.value=0;
+                    }
+                    progressed.stats=parseInt(progressed.stats)+Math.floor(parseInt(progress.get)/100);
+                    progressed.value=progressed.stats+'発想';
+                    progress.value=progress.get-100*Math.floor(parseInt(progress.get)/100);
+                    progress.get=progress.value;
+                }
+                }
+            }
+            repeatTimer();
+            if(!progress.get){
+                    progress.get=0;
+                    }
+            function numberCheck(){
+                if(!any.value){
+                    document.getElementById("anyUpgrade").disabled = true;
+                }else if(any.value.indexOf("-")>-1){
+                    any.value="";
+                }else if(any.value.indexOf(".")>-1){
+                    any.value="";
+                }else{
+                    document.getElementById("anyUpgrade").disabled = false;
+                }
+            }
+            function changeProgress(){
+                if(!click.get){
+                    click.get=0;
+                    if(!progress.get){
+                    progress.get=0;
+                    }
+                    }if(!power.value){
+                    power.value = 1+"発想力";
+                    }
+                click.get++;
+                click.value=parseInt(click.get)+"クリック";
+            progress.get=parseInt(progress.get)+parseInt(power.value)*parseInt(power.boost);
+            progress.value=progress.get;
+            if(parseInt(progress.value)>99){
+                if(!progressed.stats){
+                    progressed.stats=0;
+                    progressed.value=0;
+                    }
+                    progressed.stats=parseInt(progressed.stats)+Math.floor(parseInt(progress.get)/100);
+                    progressed.value=progressed.stats+'発想';
+                    progress.value=progress.get-100*Math.floor(parseInt(progress.get)/100);
+                    progress.get=progress.value;
+                }
+            }
+            function upgrade(inputedValue){
+                if(!power.value){
+                    click.get=0;
+                    power.value = "1発想力";
+                }
+                if(!progressed.stats){
+                    progressed.stats=0;
+                    progressed.value=0+"発想";
+                }
+                if(!cost.expected){
+                    cost.value=1;
+                    cost.expected=cost.value;
+                }
+                cost.dammy=cost.expected;
+                cost.loop = parseInt(inputedValue)-1;
+                //コストの演算
+                while(parseInt(cost.loop)>0){
+                cost.dammy=parseInt(cost.dammy)+parseInt(cost.dammy)*1.5;
+                cost.loop--;
+                }
+                if(parseInt(progressed.stats)<Math.round(parseInt(cost.dammy))){
+                    message.innerHTML="発想が足りません 不足:"+(Math.round(parseInt(cost.dammy))-parseInt(progressed.stats));
+                    setTimeout(() => {
+                         message.innerHTML = "--";
+                    }, 1200);
+                }else{
+                cost.loop2 = inputedValue-1;
+                //コストの演算
+                while(parseInt(cost.loop2)>0){
+                cost.expected=parseInt(cost.expected)+parseInt(cost.expected)*1.5;
+                cost.loop2--;
+                }
+                cost.value=Math.round(cost.expected);
+                //強化の反映
+                power.value = (parseInt(power.value)+inputedValue)+"発想力";
+                //発想の消費(cost.value*回数分減らす)
+                progressed.stats=progressed.stats-parseInt(cost.value);
+                progressed.value=progressed.stats+"発想";
+                neuron.innerHTML=parseInt(power.value)**Math.round(parseInt(power.value)/3.47);
+                //コストの増加
+                cost.expected=parseInt(cost.expected)+parseInt(cost.expected)*1.5;
+                cost.value=parseInt(Math.round(cost.expected));
+                }
+            }
+            function upgradeMax(){
+                power.UpgradeTimes=0;
+                if(!cost.expected){
+                    cost.value=1;
+                    cost.expected=cost.value;
+                }
+                if(!power.value){
+                    power.value = 1+"発想力";
+                    progressed.stats=0;
+                    progressed.value=0+"発想";
+                }
+                if(progressed.stats<parseInt(cost.value)){
+                    message.innerHTML="発想が足りません 不足:"+(parseInt(cost.value)-parseInt(progressed.stats));
+                    setTimeout(() => {
+                         message.innerHTML = "--";
+                    }, 1200);
+                }else{
+                while(progressed.stats>=parseInt(cost.expected)){
+                cost.expected=parseInt(cost.expected)+parseInt(cost.expected)*1.5;//x-1=(cost.value)log1.5(progressed.stats)がやりたい(むずい)
+                power.UpgradeTimes++;
+                }
+                cost.value=eval(Math.round(cost.expected-cost.expected*(3/5)));
+                cost.expected=eval(cost.expected-cost.expected*(3/5));
+                //強化の反映
+                power.value=(parseInt(power.value)+parseInt(power.UpgradeTimes))+"発想力";
+                progressed.stats=parseInt(progressed.value)-parseInt(cost.value);
+                progressed.value=parseInt(progressed.stats)+"発想";
+                neuron.innerHTML=parseInt(power.value)**Math.round(parseInt(power.value)/3.47);
+                //コストの増加
+                cost.expected=parseInt(cost.expected)+parseInt(cost.expected)*1.5;
+                cost.value=Math.round(cost.expected);
+                }
+            }
+            buildings.push({
+                name:"story",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            buildings.push({
+                name:"art",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            buildings.push({
+                name:"palace",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            buildings.push({
+                name:"theatre",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            buildings.push({
+                name:"radio",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            buildings.push({
+                name:"socialMedia",
+                amount:0,
+                boost:1,
+                production:0
+            });
+            techs.push({
+                name:"石器",
+                isDiscovered:false
+            });
+            techs.push({
+                name:"狩猟",
+                isDiscovered:false
+            });
+            techs.push({
+                name:"火",
+                isDiscovered:false
+            });
+            techs.push({
+                name:"衣服",
+                isDiscovered:false
+            });
+            techs.push({
+                name:"発声",
+                isDiscovered:false
+            });
+            techs.push({
+                name:"調理",
+                isDiscovered:false
+            });
+            function add(buildingIndex){
+                buildings[buildingIndex-1].amount++;
+                //buildings[buildingIndex-1].name.innerHTML=buildings[buildingIndex-1].amount;
+                if(buildings[buildingIndex-1].name==="story"){
+                if(progressed.stats>=10){
+                progressed.stats=parseInt(progressed.stats)-10;
+                progressed.value=progressed.stats+"発想";
+                story.innerHTML=buildings[0].amount;
+                }else{
+                    buildings[buildingIndex-1].amount--;
+                    alert("伝承を追加するには発想が10必要です。");
+                }
+                thought.story=buildings[0].amount*buildings[0].boost*1;
+                }else if(buildings[buildingIndex-1].name==="art"){
+                art.innerHTML=buildings[1].amount;
+                thought.art=buildings[1].amount*buildings[1].boost*18;
+                }else if(buildings[buildingIndex-1].name==="palace"){
+                palace.innerHTML=buildings[2].amount;
+                thought.palace=buildings[2].amount*buildings[2].boost*360;
+                }else if(buildings[buildingIndex-1].name==="theatre"){
+                theatre.innerHTML=buildings[3].amount;
+                thought.theatre=buildings[3].amount*buildings[3].boost*13500;
+                }else if(buildings[buildingIndex-1].name==="radio"){
+                radio.innerHTML=buildings[4].amount;
+                thought.radio=buildings[4].amount*buildings[4].boost*2450000;
+                }else if(buildings[buildingIndex-1].name==="socialMedia"){
+                socialMedia.innerHTML=buildings[5].amount;
+                thought.socialMedia=buildings[5].amount*buildings[5].boost*970000000;
+                }
+                totalThought();
+            }
+            function totalThought(){
+                if(!thought.story){
+                    thought.story=0;
+                }if(!thought.art){
+                    thought.art=0;
+                }if(!thought.palace){
+                    thought.palace=0;
+                }if(!thought.theatre){
+                    thought.theatre=0;
+                }if(!thought.radio){
+                    thought.radio=0;
+                }if(!thought.socialMedia){
+                    thought.socialMedia=0;
+                }
+                thought.value=eval(thought.story+thought.art+thought.palace+thought.theatre+thought.radio+thought.socialMedia);
+            }
+            //キャンバス
+            const canvas = document.querySelector('.canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.style.border = "3px solid";
+            ctx.beginPath();
+            ctx.font = "12px serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle="red";
+            ctx.fillText("5発想", 400, 75);
+            ctx.moveTo(425, 50);
+            ctx.lineTo(375,50);
+            ctx.lineTo(375,100);
+            ctx.lineTo(425,100);
+            ctx.lineTo(425, 50);
+            ctx.stroke();
+            //column2
+            function discoverStoneTool(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle="black";
+            ctx.fillText("石器", 400, 75);
+            ctx.moveTo(400, 100);
+            ctx.lineTo(400,125);
+            ctx.moveTo(300, 125);
+            ctx.lineTo(500,125);
+            ctx.lineTo(500,150);
+            ctx.fillStyle="red";
+            ctx.fillText("13発想", 500, 175);
+            ctx.fillText("10発想", 300, 175);
+            ctx.moveTo(475,150);
+            ctx.lineTo(525,150);
+            ctx.lineTo(525,200);
+            ctx.lineTo(475,200);
+            ctx.lineTo(475,150);
+            ctx.moveTo(300,125);
+            ctx.lineTo(300,150);
+            ctx.moveTo(275,150);
+            ctx.lineTo(325,150);
+            ctx.lineTo(325,200);
+            ctx.lineTo(275,200);
+            ctx.lineTo(275,150);
+            ctx.stroke();
+            }
+            function discoverHunting(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle="black";
+            ctx.fillText("石器", 400, 75);
+            ctx.fillText("狩猟", 300, 175);
+            ctx.moveTo(300, 200);
+            ctx.lineTo(300,225);
+            ctx.moveTo(285, 225);
+            ctx.lineTo(385,225);
+            ctx.lineTo(385,250);
+            ctx.fillStyle="red";
+            if(techs[2].isDiscovered===false){
+            ctx.moveTo(375, 250);
+            ctx.lineTo(425,250);
+            ctx.lineTo(425,300);
+            ctx.lineTo(375,300);
+            ctx.lineTo(375,250);
+            ctx.fillText("13発想", 500, 175);
+            }else{
+            ctx.fillText("31発想", 400, 275);
+            ctx.fillText("17発想", 515, 275);
+            ctx.fillStyle="black";
+            ctx.fillText("火", 500, 175);
+            }
+            ctx.moveTo(285, 225);
+            ctx.lineTo(285,250);
+            ctx.moveTo(260, 250);
+            ctx.lineTo(310,250);
+            ctx.lineTo(310,300);
+            ctx.lineTo(260,300);
+            ctx.lineTo(260,250);
+            ctx.fillStyle="red";
+            ctx.fillText("28発想", 285, 275);
+            ctx.stroke();
+            }
+            function discoverFire(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle="black";
+            ctx.fillText("石器", 400, 75);
+            ctx.fillText("火", 500, 175);
+            ctx.moveTo(500, 200);
+            ctx.lineTo(500,225);
+            ctx.moveTo(515, 225);
+            ctx.lineTo(415,225);
+            ctx.lineTo(415,250);
+            ctx.fillStyle="red";
+            if(techs[1].isDiscovered===false){
+            ctx.moveTo(375, 250);
+            ctx.lineTo(425,250);
+            ctx.lineTo(425,300);
+            ctx.lineTo(375,300);
+            ctx.lineTo(375,250);
+            ctx.fillText("10発想", 300, 175);
+            }else{
+            ctx.fillText("31発想", 400, 275);
+            ctx.fillText("28発想", 285, 275);
+            ctx.fillStyle="black";
+            ctx.fillText("狩猟", 300, 175);
+            }
+            ctx.moveTo(515, 225);
+            ctx.lineTo(515,250);
+            ctx.moveTo(490, 250);
+            ctx.lineTo(540,250);
+            ctx.lineTo(540,300);
+            ctx.lineTo(490,300);
+            ctx.lineTo(490,250);
+            ctx.fillStyle="red";
+            ctx.fillText("17発想", 515, 275);
+            ctx.stroke();
+            }
+            function discoverSpeech(){
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle="black";
+            ctx.fillText("石器", 400, 75);
+            ctx.fillText("火", 500, 175);
+            ctx.fillText("狩猟", 300, 175);
+            ctx.fillText("発声", 400, 275);
+            if(techs[5].isDiscovered===true){
+            ctx.fillText("調理", 515, 275);
+            }else{
+            ctx.fillStyle="red";
+            ctx.fillText("17発想", 515, 275);
+            }
+            ctx.fillStyle="red";
+            if(techs[3].isDiscovered===false){
+            ctx.moveTo(375, 250);
+            ctx.lineTo(425,250);
+            ctx.lineTo(425,300);
+            ctx.lineTo(375,300);
+            ctx.lineTo(375,250);
+            ctx.fillText("28発想", 285, 275);
+            }else{
+            ctx.fillText("93発想", 400, 275);
+            ctx.fillStyle="black";
+            ctx.fillText("衣服", 285, 275);
+            }
+            ctx.stroke();
+            }
+            // マウスクリックの検知
+            addEventListener("click", (event) => {
+                if(techs[0].isDiscovered===false){
+                if(event.pageX-552>375){
+                if(event.pageX-552<425){
+                if(event.pageY-7>50){
+                if(event.pageY-7<100){
+                if(!progressed.stats){progressed.stats=0;progressed.value=0+"発想"}
+                if(progressed.stats>=5){
+                progressed.stats=parseInt(progressed.value)-5;
+                progressed.value=progressed.stats+"発想";
+                power.boost++;
+                techs[0].isDiscovered=true;
+                discoverStoneTool();
+                }
+                }
+                }
+                }
+                }
+                }
+                if(techs[0].isDiscovered===true){
+                if(techs[1].isDiscovered===false){
+                if(event.pageX-552>275){
+                if(event.pageX-552<325){
+                if(event.pageY-7>150){
+                if(event.pageY-7<200){
+                if(progressed.stats>=10){
+                progressed.stats=parseInt(progressed.value)-10;
+                progressed.value=progressed.stats+"発想";
+                techs[1].isDiscovered=true;
+                discoverHunting();
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                if(techs[0].isDiscovered===true){
+                if(techs[2].isDiscovered===false){
+                if(event.pageX-552>475){
+                if(event.pageX-552<525){
+                if(event.pageY-7>150){
+                if(event.pageY-7<200){
+                if(progressed.stats>=13){
+                progressed.stats=parseInt(progressed.value)-13;
+                progressed.value=progressed.stats+"発想";
+                techs[2].isDiscovered=true;
+                discoverFire();
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                if(techs[1].isDiscovered===true){
+                if(techs[2].isDiscovered===true){
+                if(techs[4].isDiscovered===false){
+                if(event.pageX-552>375){
+                if(event.pageX-552<425){
+                if(event.pageY-7>250){
+                if(event.pageY-7<300){
+                if(progressed.stats>=31){
+                progressed.stats=parseInt(progressed.value)-31;
+                progressed.value=progressed.stats+"発想";
+                document.getElementById("storyButton").disabled = false;
+                techs[4].isDiscovered=true;
+                discoverSpeech();
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                }
+                //document.querySelector(".techTree").
+                //console.log(event.pageX-552);
+                //console.log(event.pageY-7);
+            });
+        </script>
     </body>
 </html>
