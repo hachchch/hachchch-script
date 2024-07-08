@@ -56,7 +56,7 @@
           if(f.value=="" && r.value!="" && Q.value!="" && q.value!=""){
           f.value=(Q.value*q.value/r.value**2)*k;
           }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!=""){
-          r.value=Math.sqrt(Q.value*q.value*k/f.value);
+          r.value=Math.sqrt(Math.abs(Q.value*q.value*k/f.value));
           }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!=""){
           Q.value=f.value*r.value**2/k*q.value;
           }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!=""){
