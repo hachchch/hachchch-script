@@ -49,7 +49,6 @@
                     document.getElementById("PressSound").play();
                 }
           const f = document.getElementById("force");
-          let k = 8987500000;
           const r = document.getElementById("range");
           const Q = document.getElementById("quantity1");
           const q = document.getElementById("quantity2");
@@ -57,7 +56,7 @@
           function calc(){
           let k = 1/(es.value*4*Math.PI);
           if(f.value=="" && r.value!="" && Q.value!="" && q.value!="" && es.value!=""){
-          f.value=((Q.value*q.value)/(es.value*r.value**2))*k;
+          f.value=((Q.value*q.value*k)/(es.value*(r.value**2)));
           }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!="" && es.value!=""){
           r.value=Math.sqrt(Math.abs((Q.value*q.value*k)/(f.value*es.value)));
           }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!="" && es.value!=""){
