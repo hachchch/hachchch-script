@@ -36,7 +36,7 @@
         粒子間の距離<input type="text" id="range"/><br>
         片方の電荷数<input type="text" id="quantity1" /><br>
         もう片方の電荷数<input type="text" id="quantity2" /><br>
-        <input type="button" value="計算" onclick="calc" />
+        <input type="button" value="計算" onclick="calc()" />
         </div>
         <script type="text/javascript">
             function pressTrigger() {
@@ -53,13 +53,13 @@
           const Q = document.getElementById("quantity1");
           const q = document.getElementById("quantity2");
           function calc(){
-          if(f.value="" && r.value!="" && Q.value!="" && q.value!=""){
+          if(f.value=="" && r.value!="" && Q.value!="" && q.value!=""){
           f.value=(Q.value*q.value/r.value**2)*k;
-          }else if(r.value="" && f.value!="" && Q.value!="" && q.value!=""){
+          }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!=""){
           r.value=Math.sqrt(Q.value*q.value*k/f.value);
-          }else if(Q.value="" && f.value!="" && r.value!="" && q.value!=""){
+          }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!=""){
           Q.value=f.value*r.value**2/k*q.value;
-          }else if(q.value="" && f.value!="" && Q.value!="" && r.value!=""){
+          }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!=""){
           q.value=f.value*r.value**2/k*Q.value;
           }else{
           alert("計算できません");
