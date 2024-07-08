@@ -30,12 +30,13 @@
    <p>効果音は非対応です</p>
         </audio>
         <div class="misaki">
-        <p>クーロン力計算機(真空想定)</p>
+        <p>クーロン力計算機</p>
         クーロン力<input type="text" id="force"/><br>
         クーロン定数8.9875×10⁹[N m²/C²]<br>
         粒子間の距離<input type="text" id="range"/><br>
         片方の電荷数<input type="text" id="quantity1" /><br>
         もう片方の電荷数<input type="text" id="quantity2" /><br>
+        媒質の比誘電率<input type="text" value="000000000000.885" id="epsilonS" /><br>
         <input type="button" value="計算" onclick="calc()" />
         </div>
         <script type="text/javascript">
@@ -52,15 +53,16 @@
           const r = document.getElementById("range");
           const Q = document.getElementById("quantity1");
           const q = document.getElementById("quantity2");
+          const es = document.getElementById("epsilonS");
           function calc(){
-          if(f.value=="" && r.value!="" && Q.value!="" && q.value!=""){
-          f.value=(Q.value*q.value/r.value**2)*k;
-          }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!=""){
-          r.value=Math.sqrt(Math.abs(Q.value*q.value*k/f.value));
-          }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!=""){
-          Q.value=f.value*r.value**2/k*q.value;
-          }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!=""){
-          q.value=f.value*r.value**2/k*Q.value;
+          if(f.value=="" && r.value!="" && Q.value!="" && q.value!="" && es.value!=""){
+          f.value=(Q.value*q.value/es.value*r.value**2)*k;
+          }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!="" && es.value!=""){
+          r.value=Math.sqrt(Math.abs(Q.value*q.value*k/f.value*es.value));
+          }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!="" && es.value!=""){
+          Q.value=f.value*es.value*r.value**2/k*q.value;
+          }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!="" && es.value!=""){
+          q.value=f.value*es.value*r.value**2/k*Q.value;
           }else{
           alert("計算できません");
           }
