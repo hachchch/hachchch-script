@@ -56,13 +56,13 @@
           function calc(){
           let k = 1/(es.value*4*Math.PI);
           if(f.value=="" && r.value!="" && Q.value!="" && q.value!="" && es.value!=""){
-          f.value=((Q.value*q.value*k)/(es.value*(r.value**2)));
+          f.value=((Q.value*q.value*k)/(r.value**2));
           }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!="" && es.value!=""){
-          r.value=Math.sqrt(Math.abs((Q.value*q.value*k)/(f.value*es.value)));
+          r.value=Math.sqrt(Math.abs((Q.value*q.value*k)/f.value));
           }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!="" && es.value!=""){
-          Q.value=(f.value*es.value*r.value**2)/(k*q.value);
+          Q.value=(f.value*r.value**2)/(k*q.value);
           }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!="" && es.value!=""){
-          q.value=(f.value*es.value*r.value**2)/(k*Q.value);
+          q.value=(f.value*r.value**2)/(k*Q.value);
           }else{
           alert("計算できません");
           }
