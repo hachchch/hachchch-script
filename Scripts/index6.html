@@ -11,17 +11,6 @@
                 background-color: #1f1e29;
                 color: #ffffff;
             }
-            .g {
-                font-size: 50px;
-                color: #51baf4;
-            }
-            .header{
-                font-size: 70px;
-                color: #51baf4;
-            }
-            #note{
-                font-size: 10px;
-            }
         </style>
     </head>
     <body>
@@ -32,12 +21,16 @@
         <div class="misaki">
         <p>クーロン力計算機</p>
         クーロン力<input type="text" id="force"/><br>
-        クーロン定数8.9875×10⁹[N m²/C²]<br>
         粒子間の距離<input type="text" id="range"/><br>
         片方の電荷量<input type="text" id="quantity1" /><br>
         もう片方の電荷量<input type="text" id="quantity2" /><br>
-        媒質の比誘電率<input type="text" value="000000000000.885" id="epsilonS" /><br>
+        媒質の比誘電率<input type="text" value="1" id="epsilonS" /><br>
+        媒質の誘電率<input type="text" value="0.00000000000885" id="epsilonR" /><br>
         <input type="button" value="計算" onclick="calc()" />
+        </div>
+        <div class="misaki">
+        <p>真空中のクーロン定数8.9875×10⁹[N m²/C²]<br></p>
+        <p>真空中の比誘電率<br></p>
         </div>
         <script type="text/javascript">
             function pressTrigger() {
@@ -53,18 +46,23 @@
           const Q = document.getElementById("quantity1");
           const q = document.getElementById("quantity2");
           const es = document.getElementById("epsilonS");
+          const er = document.getElementById("epsilonR");
           function calc(){
-          let k = 1/(es.value*4*Math.PI);
-          if(f.value=="" && r.value!="" && Q.value!="" && q.value!="" && es.value!=""){
-          f.value=((Q.value*q.value*k)/(r.value**2));
-          }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!="" && es.value!=""){
-          r.value=Math.sqrt(Math.abs((Q.value*q.value*k)/f.value));
-          }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!="" && es.value!=""){
-          Q.value=(f.value*r.value**2)/(k*q.value);
-          }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!="" && es.value!=""){
-          q.value=(f.value*r.value**2)/(k*Q.value);
+          let k = 1/(er.value*4*Math.PI);
+          if(f.value=="" && r.value!="" && Q.value!="" && q.value!="" && es.value!="" && er.value!=""){
+          f.value=((Q.value*q.value*k)/(es.value*(r.value**2)));
+          }else if(r.value=="" && f.value!="" && Q.value!="" && q.value!="" && es.value!="" && er.value!=""){
+          r.value=Math.sqrt(Math.abs((Q.value*q.value*k)/(f.value*es.value)));
+          }else if(Q.value=="" && f.value!="" && r.value!="" && q.value!="" && es.value!="" && er.value!=""){
+          Q.value=(f.value*es.value*(r.value**2))/(k*q.value);
+          }else if(q.value=="" && f.value!="" && Q.value!="" && r.value!="" && es.value!="" && er.value!=""){
+          q.value=(f.value*es.value*(r.value**2))/(k*Q.value);
+          }else if(es.value=="" && f.value!="" && Q.value!="" && r.value!="" && q.value!="" && er.value!=""){
+          alert("媒質の比誘電率を入力してください！");
+          }else if(er.value=="" && f.value!="" && Q.value!="" && r.value!="" && q.value!="" && es.value!=""){
+          alert("媒質の誘電率を入力してください！");
           }else{
-          alert("計算できません");
+          alert("値が不明です！または、この計算機の性能が足りません！");
           }
           }
         </script>
