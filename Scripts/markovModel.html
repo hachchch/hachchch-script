@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>hachchchのマルコフ連鎖</title>
+        <link rel="stylesheet" type="text/css" href="../index.css">
+    </head>
+    <style>
+        body{
+            color:black;
+            }
+        .wow{
+            color:gray;
+            }
+        .ohgod{
+            color:lightgreen;
+            }
+    </style>
+    <body class="misaki">
+        <div>
+        文字列<input type="text" placeholder="読み込む文字列を入力！" id="markovChainData" /><br>
+        上記の文字列が発生する確率:<t id="chanceTextBox">--</t><br>
+        <input type="button" value="ダイアグラム" onclick="showDiagram();" /><br>
+        <t id="diagram"></t>
+        </div>
+        <div>
+        <hr>
+        <p>生成する回数<input type="text" id="generateTimes" />
+        <input type="button" value="生成" onclick="generate(parseInt(document.getElementById('generateTimes').value));"></p>
+        </div>
+        <div>
+        <hr>
+        生成した文字列<br>
+        <t id="counter"></t><br>
+        <hr>
+        <t id="generatedText"><br></t>
+        </div>
+        <script type="text/javascript" src="../js/markovModel.js"></script>
+    </body>
+</html>
